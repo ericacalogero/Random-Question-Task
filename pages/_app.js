@@ -10,12 +10,12 @@ export default function App({}){
     const [memory, setMemory] = useState({});
     const [solutionShown, setSolutionShown] = useState(false);
 
-    const i = getRandomInt(2,10);
-    const j = getRandomInt(2,10);
-    const x = getRandomInt(2,10);
-    const y = getRandomInt(2,10);
-    const A = Quantities[getRandomInt(1, Quantities.length)];
-    const B = Quantities[getRandomInt(1, Quantities.length)];
+    const [i, setI] = useState(getRandomInt(2,10));
+    const [j , setJ] = useState(getRandomInt(2,10));
+    const [x , setX] = useState(getRandomInt(2,10));
+    const [y , setY] = useState(getRandomInt(2,10));
+    const [A, setA] = useState(Quantities[getRandomInt(1, Quantities.length)]);
+    const [B, setB] = useState(Quantities[getRandomInt(1, Quantities.length)]);
 
     function addToMemory(newValue){
         setMemory((prev)=>{
@@ -33,8 +33,8 @@ export default function App({}){
     return(
         <div style={{display:'flex', justifyContent:'center'}}>
             <div style={{maxWidth:'800px', width:'calc(100vw - 40px)', marginTop:'50px'}}>
-                <StaticMath latex={`\\text{${i}kg of ${A.name} and ${j}kg of ${B.name} have a total cost of ${i*A.value + j*B.value}}`} />
-                <StaticMath latex={`\\text{${x}kg of ${A.name} and ${y}kg of ${B.name} have a total cost of ${x*A.value + y*B.value}}`} />
+                <StaticMath latex={`\\text{${i}kg of ${A.name} and ${j}kg of ${B.name} have a total cost of ${i*A.value + j*B.value}p.}`} />
+                <StaticMath latex={`\\text{${x}kg of ${A.name} and ${y}kg of ${B.name} have a total cost of ${x*A.value + y*B.value}p.}`} />
                 <StaticMath latex={`\\text{Work out the total cost of 1kg of ${A.name} and 1kg of ${B.name}.}`} />
                 
                 <br/>

@@ -1,0 +1,102 @@
+[
+    {"id": "1",
+    "name": "apples",
+    "value": "20"
+    },
+    {"id": "2",
+    "name": "pears",
+    "value": "30"
+    },
+    {"id": "3",
+    "name": "oranges",
+    "value": "40"
+    },
+    {"id": "4",
+    "name": "peaches",
+    "value": "110"
+    },
+    {"id": "5",
+    "name": "broccoli",
+    "value": "100"
+    },
+    {"id": "6",
+    "name": "carrots",
+    "value": "80"
+    },
+    {"id": "7",
+    "name": "potatoes",
+    "value": "50"
+    },
+    {"id": "8",
+    "name": "leeks",
+    "value": "60"
+    },
+    {"id": "9",
+    "name": "beans",
+    "value": "70"
+    },
+    {"id": "10",
+    "name": "peas",
+    "value": "90"
+    },
+    {"id": "11",
+    "name": "lettuces",
+    "value": "120"
+    },
+    {"id": "12",
+    "name": "fennel",
+    "value": "130"
+    },
+    {"id": "13",
+    "name": "cabbages",
+    "value": "65"
+    },
+    {"id": "14",
+    "name": "beetroot",
+    "value": "55"
+    },
+    {"id": "15",
+    "name": "parsnips",
+    "value": "75"
+    },
+    {"id": "16",
+    "name": "kale",
+    "value": "85"
+    },
+    {"id": "17",
+    "name": "spinach",
+    "value": "95"
+    },
+    {"id": "18",
+    "name": "grapes",
+    "value": "145"
+    },
+    {"id": "19",
+    "name": "tomatoes",
+    "value": "45"
+    },
+    {"id": "20",
+    "name": "plums",
+    "value": "35"
+    },
+    {"id": "21",
+    "name": "ice cream",
+    "value": "200"
+    },
+    {"id": "22",
+    "name": "chocolate",
+    "value": "220"
+    },
+    {"id": "23",
+    "name": "rice",
+    "value": "20"
+    },
+    {"id": "24",
+    "name": "flour",
+    "value": "140"
+    },
+    {"id": "25",
+    "name": "corn",
+    "value": "150"
+    }
+]

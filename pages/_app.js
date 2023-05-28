@@ -3,6 +3,7 @@ import MathInput from '../components/MathInput/MathInput';
 import { useState } from 'react';
 import '../public/styles/globals.css'
 import { evaluateTex } from 'tex-math-parser';
+import Quantities from "../data/Quantities.json";
 
 export default function App({}){
 
@@ -13,8 +14,8 @@ export default function App({}){
     const j = getRandomInt(2,10);
     const x = getRandomInt(2,10);
     const y = getRandomInt(2,10);
-    const A = Quantities.id(getRandomInt(1, Quantities.length));
-    const B = Quantities.id(getRandomInt(1, Quantities.length));
+    const A = Quantities[getRandomInt(1, Quantities.length)];
+    const B = Quantities[getRandomInt(1, Quantities.length)];
 
     function addToMemory(newValue){
         setMemory((prev)=>{

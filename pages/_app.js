@@ -9,20 +9,36 @@ export default function App({}){
     const [memory, setMemory] = useState({});
     const [solutionShown, setSolutionShown] = useState(false);
 
+    const i = getRandomInt(2,10);
+    const j = getRandomInt(2,10);
+    const x = getRandomInt(2,10);
+    const y = getRandomInt(2,10);
+    const A = Quantities.id(getRandomInt(1, Quantities.length));
+    const B = Quantities.id(getRandomInt(1, Quantities.length));
+
     function addToMemory(newValue){
         setMemory((prev)=>{
             return {...prev, ...newValue}
         });
     }
 
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
+      
+
     return(
         <div style={{display:'flex', justifyContent:'center'}}>
             <div style={{maxWidth:'800px', width:'calc(100vw - 40px)', marginTop:'50px'}}>
-                <StaticMath latex={`\\text{The <StaticMath /> component can be used to write text inline with latex equations: } x^2 + 3x - 2`} />
-                <StaticMath latex={`\\text{Generate a random question and display it here.}`} />
+                <StaticMath latex={`\\text{${i}kg of ${A.name} and ${j}kg of ${B.name} have a total cost of ${i*A.value + j*B.value}}`} />
+                <StaticMath latex={`\\text{${x}kg of ${A.name} and ${y}kg of ${B.name} have a total cost of ${x*A.value + y*B.value}}`} />
+                <StaticMath latex={`\\text{Work out the total cost of 1kg of ${A.name} and 1kg of ${B.name}.}`} />
+                
                 <br/>
                 <br/>
-                {solutionShown ? <StaticMath latex={`\\text{Display the solution here}`} /> : ''}
+                {solutionShown ? <StaticMath latex={`\\text{The answer is: ${A.value + B.value}`} /> : ''}
                 <br/>
                 <br/>
                 <MathInput buttons={['power', 'times']} markingFunction={markingFunction} memKey='mathinput1' memory={memory} setMemory={addToMemory} placeholder="Type your answer here!"/>

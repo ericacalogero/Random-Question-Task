@@ -3,7 +3,7 @@ import { addStyles, EditableMathField, StaticMathField } from 'react-mathquill'
 import styles from '../../../public/styles/MathQuill.module.css'
 import thickWhiteCross from '../../../public/thickWhiteCross.svg'
 import thickWhiteTick from '../../../public/thickWhiteTick.svg'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { useTransition, animated} from 'react-spring';
 
 // inserts the required css to the <head> block.

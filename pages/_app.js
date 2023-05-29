@@ -1,6 +1,7 @@
+'use client';
 import StaticMath from '../components/StaticMath/StaticMath'
 import MathInput from '../components/MathInput/MathInput';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../public/styles/globals.css'
 import { evaluateTex } from 'tex-math-parser';
 import Quantities from "../data/Quantities.json";
@@ -16,11 +17,50 @@ export default function App({}){
     const [y , setY] = useState(getRandomInt(2,10));
     const [A, setA] = useState(Quantities[getRandomInt(1, Quantities.length)]);
     const [B, setB] = useState(Quantities[getRandomInt(1, Quantities.length)]);
-    const answer = A.value + B.value;
+    const [answer, setAnswer] = useState(Number.parseInt(A.value, 10) + Number.parseInt(B.value, 10));
+
+    useEffect(()=>{
+
+        function initializeQuestion(){
+            setI(getRandomInt(2,10));
+            setJ(getRandomInt(2,10));
+            if(i === j){
+                setJ(getRandomInt(2,10));
+            }
+            setX(getRandomInt(2,10));
+            setY(getRandomInt(2,10));
+            if(x === y){
+                setY(getRandomInt(2,10));
+            }
+            if(j === y){
+                setY(getRandomInt(2,10));
+            }
+            setA(Quantities[getRandomInt(1, Quantities.length)]);
+            setB(Quantities[getRandomInt(1, Quantities.length)]);
+            if(A.id === B.id){
+                setB(Quantities[getRandomInt(1, Quantities.length)]);
+            }
+            setAnswer(Number.parseInt(A.value, 10) + Number.parseInt(B.value, 10));
+            console.log("New question generated");
+        }
+
+        initializeQuestion();
+      },[]);
+
 
     function addToMemory(newValue){
         setMemory((prev)=>{
             return {...prev, ...newValue}
+        });
+    }
+
+    function handleShow(){
+        setSolutionShown(!solutionShown);
+    }
+
+    function handleMemory(){
+        setMemory((prev)=>{
+            return{...prev, feedbackShown:true}
         });
     }
 
@@ -40,16 +80,16 @@ export default function App({}){
                 
                 <br/>
                 <br/>
-                {solutionShown ? <StaticMath latex={`\\text{The answer is: ${answer}`} /> : ''}
+                {solutionShown && <StaticMath latex={`\\text{The answer is: ${answer}`} />}
                 <br/>
                 <br/>
                 <MathInput buttons={['power', 'times']} markingFunction={markingFunction} memKey='mathinput1' memory={memory} setMemory={addToMemory} placeholder="Type your answer here!"/>
                 <br/>
                 <br/>
-                <button onClick={()=>{setMemory((prev)=>{return{...prev, feedbackShown:true}})}}>Check Answer</button>
+                <button onClick={handleMemory}>Check Answer</button>
                 <br/>
 
-                {solutionShown ? <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(false)}}>Hide Solution</button> : <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(true)}}>Show Solution</button>}
+                <button style={{marginTop:'20px'}} onClick={handleShow}>{solutionShown? "Hide " : "Show " }Solution</button>
             </div>
         </div>
     );
@@ -63,7 +103,7 @@ function markingFunction(userInput){
     }catch{
         return 0;
     }
-    if(inputValue === A.value + B.value){
+    if(inputValue === answer){
         return 1
     }else{
         return 0;

@@ -16,6 +16,7 @@ export default function App({}){
     const [y , setY] = useState(getRandomInt(2,10));
     const [A, setA] = useState(Quantities[getRandomInt(1, Quantities.length)]);
     const [B, setB] = useState(Quantities[getRandomInt(1, Quantities.length)]);
+    const answer = A.value + B.value;
 
     function addToMemory(newValue){
         setMemory((prev)=>{
@@ -39,7 +40,7 @@ export default function App({}){
                 
                 <br/>
                 <br/>
-                {solutionShown ? <StaticMath latex={`\\text{The answer is: ${A.value + B.value}`} /> : ''}
+                {solutionShown ? <StaticMath latex={`\\text{The answer is: ${answer}`} /> : ''}
                 <br/>
                 <br/>
                 <MathInput buttons={['power', 'times']} markingFunction={markingFunction} memKey='mathinput1' memory={memory} setMemory={addToMemory} placeholder="Type your answer here!"/>
@@ -47,8 +48,8 @@ export default function App({}){
                 <br/>
                 <button onClick={()=>{setMemory((prev)=>{return{...prev, feedbackShown:true}})}}>Check Answer</button>
                 <br/>
-                {!solutionShown ? <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(true)}}>Show Solution</button> : ''}
-                {solutionShown ? <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(false)}}>Hide Solution</button> : ''}
+
+                {solutionShown ? <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(false)}}>Hide Solution</button> : <button style={{marginTop:'20px'}} onClick={()=>{setSolutionShown(true)}}>Show Solution</button>}
             </div>
         </div>
     );
@@ -62,7 +63,7 @@ function markingFunction(userInput){
     }catch{
         return 0;
     }
-    if(inputValue === 5){
+    if(inputValue === A.value + B.value){
         return 1
     }else{
         return 0;
